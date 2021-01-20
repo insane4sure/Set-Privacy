@@ -1,3 +1,9 @@
+# in powershell on target machine:
+# cd ~\downloads
+# (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/insane4sure/Set-Privacy/master/Set-Privacy.ps1') | out-file .\Set-Privacy.ps1 -force 
+#  ise .\Set-Privacy.ps1
+# .\Set-Privacy.ps1 -Strong
+
 <#PSScriptInfo
 
 .VERSION 1.1703.1
@@ -751,6 +757,8 @@ Process
         $DoEnable = $true 
     }
 
+	# windows taskbar settings
+	Add-RegistryDWord -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search\" -Name "SearchboxTaskbarMode" -Value 0
 
     $Feature | ForEach-Object {
 
